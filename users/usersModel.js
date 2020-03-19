@@ -1,18 +1,19 @@
-const db = require('../data/dbConfig.js');
+const db = require('../data/config.js');
 
-async function insert(user) {
-  const [id] = await db("users").insert(user);
+async function insert(users) {
+  const [id] = await db("users").insert(users);
   return db("users")
-    .where({ id })
+    .where("id", id)
     .first();
 }
 
 async function update(id, changes) {
-  return null;
+  await db("users").update(changes).where("id", id)
+  return findById(id)
 }
 
 function remove(id) {
-  return null;
+  return db("users").where("id", id).del()
 }
 
 function getAll() {
