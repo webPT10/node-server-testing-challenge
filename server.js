@@ -15,6 +15,8 @@ server.use((error, req, res, next) => {
     })
 })
 
-server.listen(port, () => {
-    console.log(`Server high as a kite at http://localhost:${port}`)
-})
+if (!module.parent){
+    server.listen(port, () => {
+        console.log(`Server high as a kite at http://localhost:${port}`)
+    })
+}
