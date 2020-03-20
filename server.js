@@ -8,7 +8,7 @@ const port = process.env.PORT || 4000
 server.use(express.json())
 
 server.use("/", welcomeRouter)
-server.use("/api", usersRouter)
+server.use("/api/users", usersRouter)
 
 server.use((error, req, res, next) => {
     console.log(error)

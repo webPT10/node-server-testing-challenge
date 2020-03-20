@@ -13,7 +13,7 @@ test("welcome route", async() => {
     expect(res.type).toBe("application/json")
     expect(res.body.message).toBe("Welcome to the Testing Welcome.")
     expect(res.body.message).toHaveLength(31)
-    expect(res.body.message).toMatch(/welcome/i) // ???
+    expect(res.body.message).toMatch(/welcome/i)
 })
 
 test("create users router", async() => {
