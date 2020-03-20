@@ -3,7 +3,7 @@ const Users = require("./usersModel")
 
 const router = express.Router()
 
-router.get("/", async (req, res, next) => {
+router.get("/users", async (req, res, next) => {
     try {
         res.json(await Users.getAll())
     } catch(error){
@@ -11,7 +11,7 @@ router.get("/", async (req, res, next) => {
     }
 })
 
-router.post("/", async (req, res, next) => {
+router.post("/new-user", async (req, res, next) => {
     try {
         const user = await Users.insert(req.body)
         res.status(201).json(user)

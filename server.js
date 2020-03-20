@@ -1,5 +1,6 @@
 const express = require("express")
 const welcomeRouter = require("./welcome/welcomeRouter")
+const usersRouter = require("./users/usersRouter")
 
 const server = express()
 const port = process.env.PORT || 4000
@@ -7,6 +8,7 @@ const port = process.env.PORT || 4000
 server.use(express.json())
 
 server.use("/", welcomeRouter)
+server.use("/api", usersRouter)
 
 server.use((error, req, res, next) => {
     console.log(error)
@@ -20,3 +22,4 @@ if (!module.parent){
         console.log(`Server high as a kite at http://localhost:${port}`)
     })
 }
+module.exports = server;

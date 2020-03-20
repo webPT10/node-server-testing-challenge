@@ -1,11 +1,10 @@
 const db = require("../data/config")
 const usersModel = require("./usersModel")
+
 beforeEach(async () => {
 	await db.seed.run()
 })
-afterAll(async () => {
-	await db.destroy()
-})
+
 test("insert", async () => {
 	const res = await usersModel.insert({ name: "Fitzy" })
 	expect(res.name).toBe("Fitzy")
@@ -22,4 +21,8 @@ test("remove", async () => {
 	await usersModel.remove(1)
 	const users = await db("users").select()
 	expect(users).toHaveLength(3)
+})
+
+afterAll(async () => {
+    await db.destroy()
 })
